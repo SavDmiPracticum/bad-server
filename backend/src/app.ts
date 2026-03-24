@@ -22,7 +22,7 @@ app.use(cors({ origin: ORIGIN_ALLOW, credentials: true }));
 
 app.use(serveStatic(path.join(__dirname, 'public')))
 
-app.get('/csrf-token', csrfProtection, (req, res) => {
+app.get('/auth/csrf-token', csrfProtection, (req, res) => {
     res.send(req.csrfToken());
 });
 
