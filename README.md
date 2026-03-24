@@ -13,4 +13,5 @@ docker compose up -d
 6. Админка находится по адресу http://localhost/admin/
 
 https://github.com/SavDmiPracticum/bad-server
+Савичев Дмитрий, 41 когорта, Фулстек-разработчик 
 
