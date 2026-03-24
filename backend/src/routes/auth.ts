@@ -1,3 +1,4 @@
+import csurf from 'csurf'
 import { Router } from 'express'
 import {
     getCurrentUser,
@@ -9,7 +10,6 @@ import {
     updateCurrentUser,
 } from '../controllers/auth'
 import auth from '../middlewares/auth'
-import csurf from 'csurf'
 
 const authRouter = Router()
 
