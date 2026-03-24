@@ -9,15 +9,22 @@ import {
     updateCurrentUser,
 } from '../controllers/auth'
 import auth from '../middlewares/auth'
+import csurf from 'csurf'
 
 const authRouter = Router()
+
+const csrfProtection = csurf({ cookie: true })
+
+authRouter.get('/auth/csrf-token', csrfProtection, (req, res) => {
+    res.json({ csrfToken: req.csrfToken() })
+})
 
 authRouter.get('/user', auth, getCurrentUser)
 authRouter.patch('/me', auth, updateCurrentUser)
 authRouter.get('/user/roles', auth, getCurrentUserRoles)
-authRouter.post('/login', login)
+authRouter.post('/login', csrfProtection, login)
 authRouter.get('/token', refreshAccessToken)
 authRouter.get('/logout', logout)
-authRouter.post('/register', register)
+authRouter.post('/register', csrfProtection, register)
 
 export default authRouter
